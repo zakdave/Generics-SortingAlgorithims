@@ -35,7 +35,6 @@ class aSolution * Problem::solveGreedy(class Problem * aProblem){
 	
 	while (!aProblem->solved()) {
 		aProblem = aProblem->applyBestAction();
-		// apply best action method here
 	}
 	return aProblem->createSolution();
 }

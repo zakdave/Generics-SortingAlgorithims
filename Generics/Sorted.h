@@ -9,10 +9,12 @@ public:
 
 	Sorted() { return; };
 	Sorted(std::vector<int> unsorted_values, std::vector<int> sorted_values) {  
-		// Question: Why is the line below here? Unsorted values will never be passed to the Sorted constructor?
-		// what is the point of both of these iterators? useful for greedy or las vegas?
-		sorted_list.insert(sorted_list.end(), unsorted_values.begin(), unsorted_values.end());
+		// Noted: swapped these two lines beneath for greedy sort, may need adjustments later
+
+		
 		sorted_list.insert(sorted_list.end(), sorted_values.begin(), sorted_values.end());
+		sorted_list.insert(sorted_list.end(), unsorted_values.begin(), unsorted_values.end());
+
 		return; 
 	};
 };

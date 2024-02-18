@@ -127,5 +127,9 @@ class Problem* SortIt::simplifyProblem() {
 
 // selectBestAction in this case uses a Heap to select the max.   But in this case it is wrapped into simplify problem.
 class Problem* SortIt::applyBestAction() {
-	return new SortIt();
+	// take smallest unsorted element, move to sorted, and remove
+	auto min = std::min_element(unsorted_values.begin(), unsorted_values.end());
+	sorted_values.push_back(*min);
+	unsorted_values.erase(min);
+	return new SortIt(unsorted_values, sorted_values, heap);
 };
