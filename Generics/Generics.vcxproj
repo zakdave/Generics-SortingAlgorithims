@@ -137,11 +137,14 @@
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdcpp20</LanguageStandard>
     </ClCompile>
     <ClCompile Include="Problem.cpp" />
+    <ClCompile Include="SearchAndSortProblem.cpp" />
     <ClCompile Include="SortIt.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="aSolution.h" />
     <ClInclude Include="Problem.h" />
+    <ClInclude Include="SearchAndSortProblem.h" />
+    <ClInclude Include="SearchAndSortSolution.h" />
     <ClInclude Include="Sorted.h" />
     <ClInclude Include="SortIt.h" />
   </ItemGroup>

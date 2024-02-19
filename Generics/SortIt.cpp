@@ -1,5 +1,6 @@
 #include "SortIt.h"
 #include "Sorted.h"
+#include "SearchAndSortProblem.h"
 #include <vector>
 #include <random>
 
@@ -8,11 +9,21 @@ SortIt::SortIt() {
 	return;
 }
 
+SortIt::SortIt(std::vector<int> values_to_sort) {
+	unsorted_values = values_to_sort;
+	return;
+}
+
+SortIt::SortIt(std::vector<int> values_to_sort, std::vector<int> values_sorted) {
+	unsorted_values = values_to_sort;
+	sorted_values = values_sorted;
+
+	return;
+}
 
 SortIt::SortIt(std::vector<int> values_to_sort, std::vector<int> values_sorted, std::vector<int> Heap) {
 	 unsorted_values=values_to_sort;
 	 sorted_values =  values_sorted;
-	 
 	 heap = Heap;
 	 
 	return;
@@ -41,11 +52,21 @@ bool SortIt::solved() {
 }
 
 class Problem* SortIt::applyRandomAction() {
-	
+	// select two randoms
+	auto random_integer = [this]() {
+		std::random_device rd;     // Only used once to initialise (seed) engine
+		std::mt19937 rng(rd());    // Random-number engine used (Mersenne-Twister in this case)
+		std::uniform_int_distribution<int> uni(0, unsorted_values.size()-1); // Guaranteed unbiased
+		return uni(rng);
+	};
+	int i = random_integer();
+	int j = random_integer();
 
+	std::swap(unsorted_values[i], unsorted_values[j]);
 	
-	return new SortIt();
+	return new SortIt(unsorted_values);
 }
+ 
 
 // we will split the unsorted lists into two problems with unsorted lists
 std::vector<Problem*> SortIt::make_subproblems() {
@@ -69,8 +90,7 @@ class aSolution* SortIt::createSolution()
 	return new Sorted(unsorted_values,sorted_values); 
 };
 
-// This is a helper function.
-std::vector<int> merge(std::vector<int> L1, std::vector<int> L2)
+std::vector<int> SortIt::merge(std::vector<int> L1, std::vector<int> L2)
 {
 	std::vector<int> output(L1.size() + L2.size());
 	auto it1 = L1.begin();
@@ -80,9 +100,9 @@ std::vector<int> merge(std::vector<int> L1, std::vector<int> L2)
 	while (it1 != L1.end())
 	{
 		auto el1 = *it1++;
-
 		if (it2 != L2.end())
 		{
+
 			while (el1 > *it2)
 			{
 				*ito++ = *it2++;
@@ -94,7 +114,7 @@ std::vector<int> merge(std::vector<int> L1, std::vector<int> L2)
 
 	while (it2 != L2.end())
 	{
-		*ito++ = *it2++;  //bug 1/27 in class...
+		*ito++ = *it2++;
 	}
 	return output;
 }
@@ -125,11 +145,11 @@ class Problem* SortIt::simplifyProblem() {
 	return new SortIt(heap,sorted_values,heap); // the heap are the values
 };  // in paper this is called refine
 
-// selectBestAction in this case uses a Heap to select the max.   But in this case it is wrapped into simplify problem.
+
 class Problem* SortIt::applyBestAction() {
 	// take smallest unsorted element, move to sorted, and remove
 	auto min = std::min_element(unsorted_values.begin(), unsorted_values.end());
 	sorted_values.push_back(*min);
 	unsorted_values.erase(min);
-	return new SortIt(unsorted_values, sorted_values, heap);
+	return new SortIt(unsorted_values, sorted_values);
 };

@@ -9,8 +9,6 @@ public:
 
 	Sorted() { return; };
 	Sorted(std::vector<int> unsorted_values, std::vector<int> sorted_values) {  
-		// Noted: swapped these two lines beneath for greedy sort, may need adjustments later
-
 		
 		sorted_list.insert(sorted_list.end(), sorted_values.begin(), sorted_values.end());
 		sorted_list.insert(sorted_list.end(), unsorted_values.begin(), unsorted_values.end());

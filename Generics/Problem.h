@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "aSolution.h"
+#include <vector>
 
 class Problem
 {
@@ -14,12 +15,12 @@ public:
 	virtual class Problem * simplifyProblem()=0;  // in paper this is called refine
 	virtual class Problem* applyBestAction() = 0;
 	virtual class Problem* applyRandomAction() = 0;
-	
+
 
 	static class aSolution * solveDivideAndConquer(class Problem *);
 	static class aSolution * solveLasVegas(class Problem *);
 	static class aSolution * solveGreedy(class Problem *);
 	static class aSolution * solveRecursive(class Problem *);
-	
+
 };
 

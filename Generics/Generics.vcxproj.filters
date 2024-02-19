@@ -24,6 +24,9 @@
     <ClCompile Include="SortIt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SearchAndSortProblem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Problem.h">
@@ -36,6 +39,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Sorted.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SearchAndSortProblem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SearchAndSortSolution.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

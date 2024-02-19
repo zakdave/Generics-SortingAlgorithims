@@ -3,9 +3,10 @@
 #include "Sorted.h"
 #include <algorithm>
 #include <iostream>
+#include "SearchAndSortProblem.h"
 
 class SortIt :
-    public Problem
+	public Problem
 {
 	std::vector<int> unsorted_values;
 	std::vector<int> sorted_values;
@@ -14,6 +15,8 @@ class SortIt :
 public:
 
 	SortIt();
+	SortIt(std::vector<int> unsorted_values);
+	SortIt(std::vector<int> unsorted_values, std::vector<int> sorted_values);
 	SortIt(std::vector<int> unsorted_values, std::vector<int> sorted_values, std::vector<int> heap);
 	
 	bool trivial();
@@ -25,6 +28,7 @@ public:
 	class Problem* simplifyProblem();  // in paper this is called refine
 	class Problem* applyBestAction();
 	class Problem* applyRandomAction();
+	std::vector<int> merge(std::vector<int> L1, std::vector<int> L2);
 };
 
 // Class factory like function to create the problem.
