@@ -13,14 +13,16 @@ class aSolution* SearchAndSortProblem::heapSort(class SearchAndSortProblem* aPro
 }
 
 class aSolution* SearchAndSortProblem::mergeSort(class SearchAndSortProblem* aProblem) {
+	int value_length = aProblem->values.size() - 1;
     merge(aProblem->values, aProblem->left, aProblem->middle, aProblem->right);
-	mergeSortHelper(aProblem->values, 0, aProblem->values.size() - 1);
+	mergeSortHelper(aProblem->values, 0, value_length);
     return new SearchAndSortSolution(aProblem->values);
 }
 
 class aSolution* SearchAndSortProblem::quickSort(class SearchAndSortProblem* aProblem) {
+	int value_length = aProblem->values.size() - 1;
 	partition(aProblem->values, aProblem->low, aProblem->high);
-	quickSortHelper(aProblem->values, 0, aProblem->values.size()-1);
+	quickSortHelper(aProblem->values, 0, value_length);
 	return new SearchAndSortSolution(aProblem->values);
 }
 
