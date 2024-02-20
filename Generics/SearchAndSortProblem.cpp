@@ -30,13 +30,6 @@ class aSolution* SearchAndSortProblem::quickSort(class SearchAndSortProblem* aPr
  class SearchAndSortProblem* createSSProblem(std::vector<int> values_to_sort)
 {
 	return new SearchAndSortProblem(values_to_sort);
-
 }
-
- class SearchAndSortProblem* createSSProblem(std::vector<int> values_to_sort, int left_index, int middle_index, int right_index)
- {
-	 return new SearchAndSortProblem(values_to_sort, left_index, middle_index, right_index);
-
- }
 
  
