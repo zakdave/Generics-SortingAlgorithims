@@ -80,9 +80,8 @@ int main()
     std::cout << "List Sorted (Las Vegas)" << SortedList4 << " Time Spent: " << (long long)microsec4.count() << " microseconds\n";
 
     std::generate(v.begin(), v.end(), random_integer);
-    auto mySSProblem = createSSProblem(v);
     time9 = std::chrono::high_resolution_clock::now();
-    auto mySSSolution = (SearchAndSortSolution*)SearchAndSortProblem::heapSort(mySSProblem);
+    auto mySSSolution = (SearchAndSortSolution*)SearchAndSortProblem::heapSort(createSSProblem(v));
     time10 = std::chrono::high_resolution_clock::now();
     microsec5 = std::chrono::duration_cast<std::chrono::microseconds>(time10 - time9);
     std::cout << "\n\n SearchAndSortProblem methods: \n\n";
@@ -90,20 +89,18 @@ int main()
 
 
     std::generate(v.begin(), v.end(), random_integer);
-    auto mySSProblem3 = createSSProblem(v);
     time11 = std::chrono::high_resolution_clock::now();
-    auto mySSSolution3 = (SearchAndSortSolution*)SearchAndSortProblem::mergeSort(mySSProblem3);
+    auto mySSSolution2 = (SearchAndSortSolution*)SearchAndSortProblem::mergeSort(createSSProblem(v));
     time12 = std::chrono::high_resolution_clock::now();
     microsec6 = std::chrono::duration_cast<std::chrono::microseconds>(time12 - time11);
-    std::cout << "List Sorted (Merge Sort)" << mySSSolution3 << " Time Spent: " << (long long)microsec6.count() << " microseconds\n";
+    std::cout << "List Sorted (Merge Sort)" << mySSSolution2 << " Time Spent: " << (long long)microsec6.count() << " microseconds\n";
 
     std::generate(v.begin(), v.end(), random_integer);
-    auto mySSProblem4 = createSSProblem(v);
     time13 = std::chrono::high_resolution_clock::now();
-    auto mySSSolution4 = (SearchAndSortSolution*)SearchAndSortProblem::quickSort(mySSProblem4);
+    auto mySSSolution3 = (SearchAndSortSolution*)SearchAndSortProblem::quickSort(createSSProblem(v));
     time14 = std::chrono::high_resolution_clock::now();
     microsec7 = std::chrono::duration_cast<std::chrono::microseconds>(time14 - time13);
-    std::cout << "List Sorted (Quick Sort)" << mySSSolution4 << " Time Spent: " << (long long)microsec7.count() << " microseconds\n";
+    std::cout << "List Sorted (Quick Sort)" << mySSSolution3 << " Time Spent: " << (long long)microsec7.count() << " microseconds\n";
 
     
 }
